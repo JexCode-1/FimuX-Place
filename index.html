@@ -1,716 +1,397 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>FimuX | Food & Events</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FimuX Place — Website Concept</title>
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  scroll-behavior:smooth;
+:root{
+  --ink:#17120f;
+  --cream:#f7f1ea;
+  --paper:#fffdf9;
+  --wine:#721d28;
+  --red:#9d2b38;
+  --gold:#d5a75b;
+  --muted:#756b63;
+  --line:#e4d8ca
 }
 
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#0b0b0f;
-  color:#fff;
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.6
 }
 
 a{
-  text-decoration:none;
   color:inherit;
+  text-decoration:none
 }
 
-button{
-  font-family:inherit;
+button,input,select{
+  font:inherit
 }
 
-nav{
-  position:fixed;
+.wrap{
+  width:min(1160px,92%);
+  margin:auto
+}
+
+/* HEADER */
+header{
+  position:sticky;
   top:0;
-  left:0;
-  width:100%;
-  padding:18px 7%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:rgba(11,11,15,.94);
+  z-index:30;
+  background:rgba(23,18,15,.96);
   backdrop-filter:blur(12px);
-  z-index:1000;
-  border-bottom:1px solid rgba(255,255,255,.08);
+  color:#fff;
+  padding:11px 0
 }
 
-.logo{
-  font-size:28px;
-  font-weight:800;
-  letter-spacing:2px;
-}
-
-.logo span,
-.gold{
-  color:#d4af37;
-}
-
-nav ul{
+.nav{
   display:flex;
-  gap:27px;
-  list-style:none;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px
 }
 
-nav a{
-  color:#ddd;
+.brand{
+  height:48px;
+  width:auto;
+  filter:brightness(0) invert(1)
+}
+
+.links{
+  display:flex;
+  gap:28px;
   font-size:14px;
+  font-weight:650
 }
 
-nav a:hover{
-  color:#d4af37;
+.links a{
+  opacity:.9;
+  transition:.2s
+}
+
+.links a:hover{
+  color:var(--gold);
+  opacity:1
 }
 
 .menu-btn{
   display:none;
-  font-size:28px;
-  cursor:pointer;
+  background:none;
+  border:1px solid #ffffff40;
+  color:#fff;
+  padding:7px 10px;
+  border-radius:8px;
+  font-size:20px;
+  cursor:pointer
 }
 
-section{
-  padding:90px 7%;
-}
-
+/* HERO */
 .hero{
-  min-height:100vh;
-  padding-top:140px;
-  display:flex;
-  align-items:center;
+  min-height:760px;
+  display:grid;
+  place-items:center;
+  position:relative;
+  overflow:hidden;
+  color:#fff;
+
+  /*
+    Keep your original FimuX hero background here.
+    You can replace this URL with your original base64 image
+    if you want the exact same background.
+  */
   background:
-  radial-gradient(circle at 80% 30%,#44350e,transparent 30%),
-  linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.9)),
-  #0b0b0f;
+    linear-gradient(90deg,rgba(18,12,9,.9),rgba(18,12,9,.42)),
+    linear-gradient(135deg,#35151a,#8b3038 48%,#211712);
 }
 
 .hero-content{
-  max-width:750px;
-}
-
-.tag{
-  color:#d4af37;
-  border:1px solid #d4af37;
-  padding:7px 15px;
-  border-radius:30px;
-  font-size:12px;
-  letter-spacing:2px;
+  width:min(800px,92%);
+  text-align:center;
+  padding:80px 0
 }
 
 .hero h1{
-  font-size:clamp(45px,8vw,85px);
+  font-size:clamp(48px,8vw,88px);
   line-height:1;
-  margin:25px 0;
-}
-
-.hero h1 span{
-  color:#d4af37;
+  margin:0 0 20px;
+  font-family:Georgia,serif
 }
 
 .hero p{
-  color:#bbb;
+  max-width:650px;
+  margin:0 auto 32px;
   font-size:18px;
-  max-width:620px;
-  margin-bottom:30px;
+  color:#f4e9df
 }
 
-.buttons{
+.hero-buttons{
   display:flex;
-  gap:15px;
-  flex-wrap:wrap;
+  justify-content:center;
+  gap:14px;
+  flex-wrap:wrap
 }
 
 .btn{
-  padding:14px 24px;
-  border-radius:7px;
-  border:0;
+  border:none;
   cursor:pointer;
-  font-weight:bold;
-  display:inline-block;
+  padding:14px 25px;
+  border-radius:8px;
+  font-weight:700;
+  transition:.2s
 }
 
-.primary{
-  background:#d4af37;
-  color:#080808;
+.btn-primary{
+  background:var(--gold);
+  color:#211711
 }
 
-.secondary{
-  border:1px solid #777;
-  color:white;
+.btn-primary:hover{
+  transform:translateY(-2px);
+  filter:brightness(1.08)
 }
 
-.section-title{
-  text-align:center;
-  margin-bottom:45px;
+.btn-outline{
+  background:transparent;
+  border:1px solid #fff;
+  color:#fff
 }
 
-.section-title small{
-  color:#d4af37;
-  text-transform:uppercase;
-  letter-spacing:3px;
-}
-
-.section-title h2{
-  font-size:40px;
-  margin:10px 0;
-}
-
-.section-title p{
-  color:#aaa;
-  max-width:620px;
-  margin:auto;
-}
-
-/* ABOUT */
-
-.about{
-  background:#101015;
-}
-
-.about-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:50px;
-  align-items:center;
-}
-
-.about-text h3{
-  font-size:35px;
-  margin-bottom:18px;
-}
-
-.about-text p{
-  color:#bbb;
-  margin-bottom:15px;
-}
-
-.about-boxes{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:15px;
-}
-
-.about-box{
-  padding:30px;
-  background:#18181e;
-  border:1px solid #292930;
-  border-radius:12px;
-}
-
-.about-box strong{
-  display:block;
-  color:#d4af37;
-  font-size:30px;
-}
-
-.about-box span{
-  color:#aaa;
-}
-
-/* SERVICES */
-
-.services-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:20px;
-}
-
-.service{
-  background:#141419;
-  border:1px solid #292930;
-  padding:28px 22px;
-  border-radius:12px;
-  transition:.3s;
-}
-
-.service:hover{
-  transform:translateY(-6px);
-  border-color:#d4af37;
-}
-
-.service-icon{
-  font-size:38px;
-  margin-bottom:15px;
-}
-
-.service p{
-  color:#aaa;
-  font-size:14px;
-}
-
-/* FOOD */
-
-.food{
-  background:#101015;
-}
-
-.food-categories{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-bottom:30px;
-}
-
-.category-btn{
-  background:#18181e;
-  color:#ddd;
-  border:1px solid #333;
-  padding:10px 18px;
-  border-radius:30px;
-  cursor:pointer;
-}
-
-.category-btn.active,
-.category-btn:hover{
-  background:#d4af37;
-  color:#000;
-}
-
-.food-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
-}
-
-.food-card{
-  background:#18181e;
-  border:1px solid #292930;
-  border-radius:14px;
-  overflow:hidden;
-  transition:.3s;
-}
-
-.food-card:hover{
-  transform:translateY(-5px);
-  border-color:#d4af37;
-}
-
-.food-image{
-  height:180px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:65px;
-  background:linear-gradient(135deg,#29200c,#17171c);
-}
-
-.food-info{
-  padding:20px;
-}
-
-.food-info h3{
-  margin-bottom:7px;
-}
-
-.food-info p{
-  color:#999;
-  font-size:13px;
-  margin-bottom:15px;
-}
-
-.food-bottom{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.price{
-  color:#d4af37;
-  font-weight:bold;
-  font-size:18px;
-}
-
-.add-btn{
-  background:#d4af37;
-  color:#000;
-  border:0;
-  border-radius:6px;
-  padding:10px 15px;
-  cursor:pointer;
-  font-weight:bold;
-}
-
-/* CART */
-
-.cart-button{
-  position:fixed;
-  right:22px;
-  bottom:22px;
-  z-index:1500;
-  background:#d4af37;
-  color:#000;
-  width:60px;
-  height:60px;
-  border-radius:50%;
-  border:0;
-  font-size:24px;
-  cursor:pointer;
-  box-shadow:0 5px 25px rgba(0,0,0,.5);
-}
-
-.cart-count{
-  position:absolute;
-  top:-4px;
-  right:-4px;
+.btn-outline:hover{
   background:#fff;
-  color:#000;
-  width:23px;
-  height:23px;
-  border-radius:50%;
+  color:var(--ink)
+}
+
+/* GENERAL SECTIONS */
+section{
+  padding:80px 0
+}
+
+.section-heading{
+  text-align:center;
+  max-width:700px;
+  margin:0 auto 45px
+}
+
+.section-heading span{
+  color:var(--wine);
+  text-transform:uppercase;
+  letter-spacing:2px;
   font-size:12px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:bold;
+  font-weight:800
 }
 
-.cart-overlay{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.75);
-  z-index:2000;
+.section-heading h2{
+  font-family:Georgia,serif;
+  font-size:42px;
+  margin:8px 0 12px
 }
 
-.cart{
-  position:absolute;
-  right:0;
-  top:0;
-  height:100%;
-  width:min(430px,100%);
-  background:#111116;
-  padding:25px;
-  overflow-y:auto;
+.section-heading p{
+  color:var(--muted);
+  margin:0
 }
 
-.cart-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:25px;
+/* MENU */
+.menu-section{
+  background:var(--paper)
 }
 
-.close-cart{
-  background:none;
-  color:white;
-  border:0;
-  font-size:25px;
-  cursor:pointer;
+.menu-preview{
+  max-width:850px;
+  margin:auto;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:45px 30px;
+  text-align:center;
+  background:#fff
 }
 
-.cart-item{
-  display:flex;
-  justify-content:space-between;
-  gap:12px;
-  padding:15px 0;
-  border-bottom:1px solid #292930;
-}
-
-.cart-item small{
-  color:#999;
-}
-
-.qty{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  margin-top:7px;
-}
-
-.qty button{
-  width:27px;
-  height:27px;
-  border:0;
-  border-radius:4px;
-  cursor:pointer;
-}
-
-.remove{
-  background:none;
-  border:0;
-  color:#e57373;
-  cursor:pointer;
-}
-
-.cart-summary{
-  margin-top:25px;
-  border-top:1px solid #292930;
-  padding-top:20px;
-}
-
-.summary-row{
-  display:flex;
-  justify-content:space-between;
-  margin-bottom:10px;
-}
-
-.total{
-  font-size:22px;
-  color:#d4af37;
-  font-weight:bold;
-}
-
-.full-btn{
-  width:100%;
-  margin-top:20px;
-}
-
-/* GALLERY */
-
-.gallery{
-  background:#101015;
-}
-
-.gallery-grid{
+.menu-preview-icon{
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  margin:0 auto 20px;
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
+  place-items:center;
+  background:#f5e8d5;
+  color:var(--wine);
+  font-size:30px
 }
 
-.gallery-item{
-  height:220px;
-  border-radius:12px;
-  background:linear-gradient(135deg,#30240d,#18181d);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  color:#d4af37;
-  font-weight:bold;
+.menu-preview h3{
+  font-family:Georgia,serif;
+  font-size:30px;
+  margin:0 0 10px
 }
 
-/* WHY */
-
-.why-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
-}
-
-.why-card{
-  padding:30px;
-  background:#141419;
-  border:1px solid #292930;
-  border-radius:12px;
-}
-
-.why-card p{
-  color:#aaa;
-  font-size:14px;
+.menu-preview p{
+  color:var(--muted);
+  margin:0 0 25px
 }
 
 /* BOOKING */
-
-.booking{
-  background:#101015;
+.booking-section{
+  background:var(--cream)
 }
 
-.booking-wrapper{
-  max-width:900px;
+.booking-card{
+  width:min(720px,100%);
   margin:auto;
-  background:#16161c;
-  border:1px solid #292930;
-  border-radius:15px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:18px;
   padding:35px;
+  box-shadow:0 15px 45px rgba(40,20,10,.08)
 }
 
-.form-grid{
+.booking-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:18px;
+  gap:18px
 }
 
-.form-group{
-  margin-bottom:18px;
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:7px
 }
 
-label{
-  display:block;
-  margin-bottom:7px;
-  color:#ddd;
+.field.full{
+  grid-column:1/-1
+}
+
+.field label{
   font-size:13px;
+  font-weight:750
 }
 
-input,
-select,
-textarea{
+.field input,
+.field select{
   width:100%;
-  padding:14px;
-  background:#0d0d11;
-  color:white;
-  border:1px solid #33333b;
-  border-radius:7px;
-  outline:none;
-}
-
-textarea{
-  min-height:130px;
-  resize:vertical;
-}
-
-input:focus,
-select:focus,
-textarea:focus{
-  border-color:#d4af37;
-}
-
-.booking-price{
-  padding:20px;
-  background:#0d0d11;
+  padding:13px 14px;
+  border:1px solid var(--line);
   border-radius:8px;
-  margin-bottom:20px;
+  outline:none;
+  background:#fff
 }
 
-.booking-price strong{
-  color:#d4af37;
-  font-size:25px;
+.field input:focus,
+.field select:focus{
+  border-color:var(--wine)
 }
 
-/* MODAL */
+.booking-submit{
+  width:100%;
+  margin-top:22px;
+  background:var(--wine);
+  color:#fff
+}
 
-.modal{
+.booking-submit:hover{
+  background:var(--red)
+}
+
+/* BOOKING SUCCESS */
+.booking-success{
   display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.8);
-  z-index:3000;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-}
-
-.modal-box{
-  width:min(500px,100%);
-  background:#16161c;
-  border:1px solid #333;
-  border-radius:15px;
-  padding:30px;
-}
-
-.modal-box h2{
-  margin-bottom:15px;
-}
-
-.modal-box p{
-  color:#aaa;
-  margin-bottom:20px;
-}
-
-/* CTA */
-
-.cta{
   text-align:center;
-  background:radial-gradient(circle,#352b0e,#0b0b0f 60%);
+  padding:20px
 }
 
-.cta h2{
-  font-size:45px;
-  margin-bottom:15px;
+.booking-success.show{
+  display:block
 }
 
-.cta p{
-  color:#aaa;
-  margin-bottom:25px;
+.booking-success .check{
+  width:65px;
+  height:65px;
+  border-radius:50%;
+  background:#e7f2e8;
+  color:#28733a;
+  display:grid;
+  place-items:center;
+  margin:0 auto 18px;
+  font-size:30px
+}
+
+.booking-success h3{
+  font-family:Georgia,serif;
+  font-size:28px;
+  margin:0 0 8px
+}
+
+.booking-success p{
+  color:var(--muted)
 }
 
 /* FOOTER */
-
 footer{
-  padding:35px 7%;
-  background:#070709;
-  display:flex;
-  justify-content:space-between;
-  flex-wrap:wrap;
-  gap:20px;
+  background:var(--ink);
+  color:#fff;
+  padding:45px 0;
+  text-align:center
 }
 
 footer p{
-  color:#888;
+  margin:5px 0;
+  color:#c9beb5
 }
 
 /* MOBILE */
+@media(max-width:760px){
 
-@media(max-width:900px){
-
-  nav ul{
+  .links{
     display:none;
     position:absolute;
     top:70px;
-    left:0;
-    width:100%;
-    background:#0b0b0f;
+    left:4%;
+    right:4%;
+    background:#17120f;
+    padding:20px;
+    border-radius:10px;
     flex-direction:column;
-    text-align:center;
-    padding:25px;
+    gap:15px
   }
 
-  nav ul.active{
-    display:flex;
+  .links.open{
+    display:flex
   }
 
   .menu-btn{
-    display:block;
-  }
-
-  .services-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .about-grid{
-    grid-template-columns:1fr;
-  }
-
-  .food-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .why-grid{
-    grid-template-columns:1fr;
-  }
-}
-
-@media(max-width:600px){
-
-  section{
-    padding:70px 5%;
+    display:block
   }
 
   .hero{
-    padding-left:5%;
-    padding-right:5%;
+    min-height:650px
   }
 
   .hero h1{
-    font-size:50px;
+    font-size:55px
   }
 
-  .section-title h2{
-    font-size:32px;
+  .hero p{
+    font-size:16px
   }
 
-  .services-grid,
-  .food-grid,
-  .gallery-grid{
-    grid-template-columns:1fr;
+  .booking-grid{
+    grid-template-columns:1fr
   }
 
-  .form-grid{
-    grid-template-columns:1fr;
+  .field.full{
+    grid-column:auto
   }
 
-  .booking-wrapper{
-    padding:22px;
-  }
-
-  .cta h2{
-    font-size:34px;
+  .booking-card{
+    padding:24px 18px
   }
 }
 </style>
@@ -718,824 +399,391 @@ footer p{
 
 <body>
 
-<!-- NAVIGATION -->
+<!-- HEADER -->
+<header>
+  <div class="wrap nav">
 
-<nav>
+    <!-- Replace with your actual FimuX logo if you have one -->
+    <a href="#home" style="font-family:Georgia,serif;font-size:27px;font-weight:bold">
+      FimuX
+    </a>
 
-<a href="#home" class="logo">
-Fimu<span>X</span>
-</a>
+    <nav class="links" id="navLinks">
+      <a href="#home">Home</a>
 
-<div class="menu-btn" onclick="toggleMenu()">☰</div>
+      <!-- CLICKABLE MENU -->
+      <a href="#menu">Menu</a>
 
-<ul id="navLinks">
-<li><a href="#home">Home</a></li>
-<li><a href="#about">About</a></li>
-<li><a href="#services">Services</a></li>
-<li><a href="#food">Order Food</a></li>
-<li><a href="#gallery">Gallery</a></li>
-<li><a href="#booking">Book Event</a></li>
-</ul>
+      <!-- CLICKABLE BOOKING -->
+      <a href="#booking">Book a Table</a>
 
-</nav>
+      <a href="#about">About</a>
+    </nav>
+
+    <button class="menu-btn" id="menuBtn" aria-label="Open navigation">
+      ☰
+    </button>
+
+  </div>
+</header>
 
 
 <!-- HERO -->
-
 <section class="hero" id="home">
 
-<div class="hero-content">
+  <div class="hero-content">
 
-<span class="tag">Food • Events • Experiences</span>
+    <h1>FimuX Place</h1>
 
-<h1>
-Your Moment.<br>
-<span>Our Magic.</span>
-</h1>
+    <p>
+      A refined destination for memorable dining, beautiful moments
+      and unforgettable experiences.
+    </p>
 
-<p>
-Welcome to FimuX — your destination for delicious food,
-memorable events and unforgettable experiences.
-</p>
+    <div class="hero-buttons">
 
-<div class="buttons">
+      <!-- THIS BUTTON OPENS MENU -->
+      <a href="#menu" class="btn btn-primary">
+        Explore Menu
+      </a>
 
-<a href="#food" class="btn primary">
-Order Food
-</a>
+      <!-- THIS BUTTON OPENS BOOKING -->
+      <a href="#booking" class="btn btn-outline">
+        Book a Table
+      </a>
 
-<a href="#booking" class="btn secondary">
-Book An Event
-</a>
+    </div>
 
-</div>
+  </div>
 
-</div>
+</section>
+
+
+<!-- MENU SECTION -->
+<section class="menu-section" id="menu">
+
+  <div class="wrap">
+
+    <div class="section-heading">
+      <span>FimuX Dining</span>
+
+      <h2>Our Menu</h2>
+
+      <p>
+        Explore what FimuX Place has to offer. Our menu items will be
+        added here soon.
+      </p>
+    </div>
+
+
+    <div class="menu-preview">
+
+      <div class="menu-preview-icon">
+        ☕
+      </div>
+
+      <h3>Menu Coming Soon</h3>
+
+      <p>
+        We're preparing something special for you.
+        Check back soon to explore our food and drinks.
+      </p>
+
+      <!-- Currently just a visual button.
+           Food items will be added later. -->
+      <button class="btn btn-primary" onclick="showMenuMessage()">
+        View Menu
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- BOOKING SECTION -->
+<section class="booking-section" id="booking">
+
+  <div class="wrap">
+
+    <div class="section-heading">
+
+      <span>Reservations</span>
+
+      <h2>Book Your Table</h2>
+
+      <p>
+        Choose your preferred date and time and send your booking request.
+      </p>
+
+    </div>
+
+
+    <div class="booking-card">
+
+      <!-- BOOKING FORM -->
+      <form id="bookingForm">
+
+        <div class="booking-grid">
+
+          <div class="field">
+            <label for="guestName">Full Name</label>
+            <input
+              type="text"
+              id="guestName"
+              placeholder="Your name"
+              required
+            >
+          </div>
+
+
+          <div class="field">
+            <label for="guestPhone">Phone Number</label>
+            <input
+              type="tel"
+              id="guestPhone"
+              placeholder="080..."
+              required
+            >
+          </div>
+
+
+          <div class="field">
+            <label for="bookingDate">Date</label>
+            <input
+              type="date"
+              id="bookingDate"
+              required
+            >
+          </div>
+
+
+          <div class="field">
+            <label for="bookingTime">Time</label>
+            <input
+              type="time"
+              id="bookingTime"
+              required
+            >
+          </div>
+
+
+          <div class="field">
+            <label for="guests">Number of Guests</label>
+
+            <select id="guests" required>
+              <option value="">Select guests</option>
+              <option>1 Guest</option>
+              <option>2 Guests</option>
+              <option>3 Guests</option>
+              <option>4 Guests</option>
+              <option>5 Guests</option>
+              <option>6 Guests</option>
+              <option>7 Guests</option>
+              <option>8+ Guests</option>
+            </select>
+
+          </div>
+
+
+          <div class="field">
+            <label for="occasion">Occasion</label>
+
+            <select id="occasion">
+              <option value="">Select occasion</option>
+              <option>Regular Dining</option>
+              <option>Birthday</option>
+              <option>Date Night</option>
+              <option>Anniversary</option>
+              <option>Business</option>
+              <option>Other</option>
+            </select>
+
+          </div>
+
+
+          <div class="field full">
+
+            <label for="notes">
+              Special Request
+            </label>
+
+            <input
+              type="text"
+              id="notes"
+              placeholder="Any special request?"
+            >
+
+          </div>
+
+        </div>
+
+
+        <button
+          type="submit"
+          class="btn booking-submit"
+        >
+          Confirm Booking Request
+        </button>
+
+      </form>
+
+
+      <!-- SUCCESS MESSAGE -->
+      <div
+        class="booking-success"
+        id="bookingSuccess"
+      >
+
+        <div class="check">
+          ✓
+        </div>
+
+        <h3>Booking Request Received</h3>
+
+        <p>
+          Thank you for choosing FimuX Place.
+          Your booking details have been recorded.
+        </p>
+
+        <button
+          class="btn btn-primary"
+          onclick="newBooking()"
+        >
+          Make Another Booking
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
 
 </section>
 
 
 <!-- ABOUT -->
+<section id="about">
 
-<section class="about" id="about">
+  <div class="wrap">
 
-<div class="section-title">
+    <div class="section-heading">
 
-<small>About FimuX</small>
+      <span>Welcome to FimuX</span>
 
-<h2>More Than Just An Event</h2>
+      <h2>A Place To Enjoy</h2>
 
-<p>
-FimuX brings food, celebrations and experiences together
-in one place.
-</p>
+      <p>
+        FimuX Place brings together dining, celebrations and memorable
+        experiences in one beautiful destination.
+      </p>
 
-</div>
+    </div>
 
-<div class="about-grid">
-
-<div class="about-text">
-
-<h3>We Create Moments That Matter.</h3>
-
-<p>
-Whether you're ordering a delicious meal or planning
-a special celebration, FimuX is designed to make the
-experience simple and memorable.
-</p>
-
-<p>
-Choose your food, add it to your cart, complete your
-order or book your next event with us.
-</p>
-
-</div>
-
-<div class="about-boxes">
-
-<div class="about-box">
-<strong>100%</strong>
-<span>Passion</span>
-</div>
-
-<div class="about-box">
-<strong>24/7</strong>
-<span>Creativity</span>
-</div>
-
-<div class="about-box">
-<strong>∞</strong>
-<span>Possibilities</span>
-</div>
-
-<div class="about-box">
-<strong>1</strong>
-<span>FimuX Experience</span>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- SERVICES -->
-
-<section id="services">
-
-<div class="section-title">
-
-<small>What We Do</small>
-
-<h2>Our Services</h2>
-
-<p>
-Food and experiences designed around you.
-</p>
-
-</div>
-
-<div class="services-grid">
-
-<div class="service">
-<div class="service-icon">🍔</div>
-<h3>Food Ordering</h3>
-<p>
-Order your favourite meals online and add them directly
-to your cart.
-</p>
-</div>
-
-<div class="service">
-<div class="service-icon">🎉</div>
-<h3>Birthday Events</h3>
-<p>
-Create a fun and memorable birthday celebration.
-</p>
-</div>
-
-<div class="service">
-<div class="service-icon">💍</div>
-<h3>Weddings</h3>
-<p>
-Beautiful experiences designed around your special day.
-</p>
-</div>
-
-<div class="service">
-<div class="service-icon">🏢</div>
-<h3>Corporate Events</h3>
-<p>
-Professional event experiences for businesses and teams.
-</p>
-</div>
-
-</div>
-
-</section>
-
-
-<!-- FOOD -->
-
-<section class="food" id="food">
-
-<div class="section-title">
-
-<small>FimuX Kitchen</small>
-
-<h2>Order Your Favourite Food</h2>
-
-<p>
-Tap an item to add it to your cart.
-</p>
-
-</div>
-
-
-<div class="food-categories">
-
-<button class="category-btn active"
-onclick="filterFood('all',this)">
-All
-</button>
-
-<button class="category-btn"
-onclick="filterFood('rice',this)">
-Rice
-</button>
-
-<button class="category-btn"
-onclick="filterFood('fastfood',this)">
-Fast Food
-</button>
-
-<button class="category-btn"
-onclick="filterFood('drinks',this)">
-Drinks
-</button>
-
-</div>
-
-
-<div class="food-grid" id="foodGrid">
-
-
-<div class="food-card" data-category="rice">
-
-<div class="food-image">🍚</div>
-
-<div class="food-info">
-
-<h3>Jollof Rice</h3>
-
-<p>Delicious Nigerian-style jollof rice.</p>
-
-<div class="food-bottom">
-
-<span class="price">₦3,500</span>
-
-<button class="add-btn"
-onclick="addToCart('Jollof Rice',3500)">
-Add to Cart
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-
-<div class="food-card" data-category="rice">
-
-<div class="food-image">🍗</div>
-
-<div class="food-info">
-
-<h3>Jollof & Chicken</h3>
-
-<p>Jollof rice served with delicious chicken.</p>
-
-<div class="food-bottom">
-
-<span class="price">₦5,000</span>
-
-<button class="add-btn"
-onclick="addToCart('Jollof & Chicken',5000)">
-Add to Cart
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-
-<div class="food-card" data-category="fastfood">
-
-<div class="food-image">🍔</div>
-
-<div class="food-info">
-
-<h3>Classic Burger</h3>
-
-<p>Juicy burger with fresh toppings.</p>
-
-<div class="food-bottom">
-
-<span class="price">₦4,500</span>
-
-<button class="add-btn"
-onclick="addToCart('Classic Burger',4500)">
-Add to Cart
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-
-<div class="food-card" data-category="fastfood">
-
-<div class="food-image">🍟</div>
-
-<div class="food-info">
-
-<h3>Chicken & Chips</h3>
-
-<p>Crispy chicken served with golden fries.</p>
-
-<div class="food-bottom">
-
-<span class="price">₦4,000</span>
-
-<button class="add-btn"
-onclick="addToCart('Chicken & Chips',4000)">
-Add to Cart
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-
-<div class="food-card" data-category="fastfood">
-
-<div class="food-image">🍕</div>
-
-<div class="food-info">
-
-<h3>Pizza</h3>
-
-<p>Freshly prepared cheesy pizza.</p>
-
-<div class="food-bottom">
-
-<span class="price">₦7,500</span>
-
-<button class="add-btn"
-onclick="addToCart('Pizza',7500)">
-Add to Cart
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-
-<div class="food-card" data-category="drinks">
-
-<div class="food-image">🥤</div>
-
-<div class="food-info">
-
-<h3>Soft Drink</h3>
-
-<p>Refreshing chilled soft drink.</p>
-
-<div class="food-bottom">
-
-<span class="price">₦1,000</span>
-
-<button class="add-btn"
-onclick="addToCart('Soft Drink',1000)">
-Add to Cart
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-<!-- CART BUTTON -->
-
-<button class="cart-button" onclick="openCart()">
-
-🛒
-
-<span class="cart-count" id="cartCount">
-0
-</span>
-
-</button>
-
-
-<!-- CART -->
-
-<div class="cart-overlay" id="cartOverlay">
-
-<div class="cart">
-
-<div class="cart-header">
-
-<h2>Your Cart</h2>
-
-<button class="close-cart"
-onclick="closeCart()">
-×
-</button>
-
-</div>
-
-<div id="cartItems"></div>
-
-<div class="cart-summary">
-
-<div class="summary-row">
-<span>Subtotal</span>
-<strong id="cartSubtotal">₦0</strong>
-</div>
-
-<div class="summary-row">
-<span>Delivery</span>
-<strong id="deliveryFee">₦0</strong>
-</div>
-
-<div class="summary-row total">
-<span>Total</span>
-<strong id="cartTotal">₦0</strong>
-</div>
-
-<button class="btn primary full-btn"
-onclick="checkout()">
-Proceed To Checkout
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- GALLERY -->
-
-<section class="gallery" id="gallery">
-
-<div class="section-title">
-
-<small>Our Work</small>
-
-<h2>FimuX Gallery</h2>
-
-<p>
-A glimpse of our events and experiences.
-</p>
-
-</div>
-
-<div class="gallery-grid">
-
-<div class="gallery-item">Birthday Celebration</div>
-
-<div class="gallery-item">Wedding Experience</div>
-
-<div class="gallery-item">Private Party</div>
-
-<div class="gallery-item">Corporate Event</div>
-
-<div class="gallery-item">Food Experience</div>
-
-<div class="gallery-item">Special Celebration</div>
-
-</div>
-
-</section>
-
-
-<!-- WHY FIMUX -->
-
-<section>
-
-<div class="section-title">
-
-<small>Why FimuX</small>
-
-<h2>Made For Your Moment</h2>
-
-</div>
-
-<div class="why-grid">
-
-<div class="why-card">
-
-<div class="service-icon">✨</div>
-
-<h3>Creative</h3>
-
-<p>
-We turn ideas into memorable experiences.
-</p>
-
-</div>
-
-<div class="why-card">
-
-<div class="service-icon">🤝</div>
-
-<h3>Personal</h3>
-
-<p>
-Your event and food experience should feel personal.
-</p>
-
-</div>
-
-<div class="why-card">
-
-<div class="service-icon">⭐</div>
-
-<h3>Memorable</h3>
-
-<p>
-We want every order and celebration to be worth remembering.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- EVENT BOOKING -->
-
-<section class="booking" id="booking">
-
-<div class="section-title">
-
-<small>Book With FimuX</small>
-
-<h2>Plan Your Event</h2>
-
-<p>
-Tell us about your event and continue to booking payment.
-</p>
-
-</div>
-
-
-<div class="booking-wrapper">
-
-<form id="bookingForm">
-
-<div class="form-grid">
-
-<div class="form-group">
-
-<label>Full Name</label>
-
-<input
-type="text"
-id="bookingName"
-placeholder="Your name"
-required>
-
-</div>
-
-
-<div class="form-group">
-
-<label>Phone Number</label>
-
-<input
-type="tel"
-id="bookingPhone"
-placeholder="080..."
-required>
-
-</div>
-
-</div>
-
-
-<div class="form-grid">
-
-<div class="form-group">
-
-<label>Event Type</label>
-
-<select id="bookingType" required>
-
-<option value="">Choose event</option>
-
-<option value="Birthday">Birthday</option>
-
-<option value="Wedding">Wedding</option>
-
-<option value="Corporate Event">Corporate Event</option>
-
-<option value="Private Party">Private Party</option>
-
-<option value="Other">Other</option>
-
-</select>
-
-</div>
-
-
-<div class="form-group">
-
-<label>Event Date</label>
-
-<input
-type="date"
-id="bookingDate"
-required>
-
-</div>
-
-</div>
-
-
-<div class="form-grid">
-
-<div class="form-group">
-
-<label>Number Of Guests</label>
-
-<input
-type="number"
-id="bookingGuests"
-min="1"
-placeholder="e.g. 100"
-required>
-
-</div>
-
-
-<div class="form-group">
-
-<label>Booking Package</label>
-
-<select id="bookingPackage"
-onchange="updateBookingPrice()"
-required>
-
-<option value="">Choose package</option>
-
-<option value="50000">Basic — ₦50,000</option>
-
-<option value="100000">Standard — ₦100,000</option>
-
-<option value="200000">Premium — ₦200,000</option>
-
-</select>
-
-</div>
-
-</div>
-
-
-<div class="form-group">
-
-<label>Event Details</label>
-
-<textarea
-id="bookingDetails"
-placeholder="Tell us about your event..."
-required></textarea>
-
-</div>
-
-
-<div class="booking-price">
-
-<p>Booking Total</p>
-
-<strong id="bookingPrice">
-₦0
-</strong>
-
-</div>
-
-
-<button
-type="submit"
-class="btn primary full-btn">
-
-Continue To Booking Payment
-
-</button>
-
-</form>
-
-</div>
-
-</section>
-
-
-<!-- CTA -->
-
-<section class="cta">
-
-<h2>Ready To Create Something Amazing?</h2>
-
-<p>
-Order great food or book your next unforgettable event.
-</p>
-
-<div class="buttons"
-style="justify-content:center">
-
-<a href="#food" class="btn primary">
-Order Food
-</a>
-
-<a href="#booking" class="btn secondary">
-Book An Event
-</a>
-
-</div>
+  </div>
 
 </section>
 
 
 <!-- FOOTER -->
-
 <footer>
 
-<p>
-© 2026 FimuX. All rights reserved.
-</p>
+  <div class="wrap">
 
-<p>
-Food • Events • Experiences
-</p>
+    <h3 style="font-family:Georgia,serif;font-size:28px;margin:0">
+      FimuX Place
+    </h3>
+
+    <p>
+      Dining • Events • Experiences
+    </p>
+
+    <p style="font-size:13px;margin-top:18px">
+      © 2026 FimuX Place. All rights reserved.
+    </p>
+
+  </div>
 
 </footer>
 
 
-<!-- CHECKOUT MODAL -->
+<script>
 
-<div class="modal" id="checkoutModal">
+/* MOBILE NAVIGATION */
 
-<div class="modal-box">
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
 
-<h2>Food Checkout</h2>
+menuBtn.addEventListener("click", function(){
 
-<p>
-Enter your details before proceeding to secure payment.
-</p>
+  navLinks.classList.toggle("open");
 
-<form id="checkoutForm">
-
-<div class="form-group">
-
-<label>Full Name</label>
-
-<input
-type="text"
-id="customerName"
-required
-placeholder="Your name">
-
-</div>
+});
 
 
-<div class="form-group">
+/* CLOSE MOBILE MENU AFTER CLICKING A LINK */
 
-<label>Phone Number</label>
+document.querySelectorAll("#navLinks a").forEach(function(link){
 
-<input
-type="tel"
-id="customerPhone"
-required
-placeholder="080...">
+  link.addEventListener("click", function(){
 
-</div>
+    navLinks.classList.remove("open");
 
+  });
 
-<div class="form-group">
-
-<label>Delivery Address</label>
-
-<textarea
-id="customerAddress"
-required
-placeholder="Enter delivery address"></textarea>
-
-</div>
+});
 
 
-<button class="btn primary full-btn"
-type="submit">
+/* MENU BUTTON */
 
-Proceed To Payment
+function showMenuMessage(){
 
-</button>
+  alert(
+    "The FimuX menu is being prepared. Food items will be added soon."
+  );
 
-<button
-type="button"
-class="btn secondary full-btn"
-onclick="closeCheckout()">
-
-Cancel
-
-</button>
-
-</form>
-
-</div>
-
-</div>
+}
 
 
-<!-- PAYMENT MESSAGE -->
+/* BOOKING FORM */
 
-<div class="mod
+const bookingForm = document.getElementById("bookingForm");
+const bookingSuccess = document.getElementById("bookingSuccess");
+
+bookingForm.addEventListener("submit", function(event){
+
+  event.preventDefault();
+
+  /*
+    For now this is a working front-end booking interaction.
+    Later we can connect this to a real database/payment system.
+  */
+
+  bookingForm.style.display = "none";
+
+  bookingSuccess.classList.add("show");
+
+  document.getElementById("booking").scrollIntoView({
+    behavior:"smooth"
+  });
+
+});
+
+
+/* NEW BOOKING */
+
+function newBooking(){
+
+  bookingSuccess.classList.remove("show");
+
+  bookingForm.reset();
+
+  bookingForm.style.display = "block";
+
+}
+
+</script>
+
+</body>
+</html>
